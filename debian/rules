@@ -4,3 +4,11 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
 	dh $@
+
+# sw64 (Sunway) GCC 12.3.0 has an internal compiler error (ICE) with -O2
+# when generating aligned stores from floating-point registers in
+# fortified string functions. Reduce optimization to -O1 for sw64.
+ifeq ($(DEB_HOST_ARCH),sw64)
+export DEB_CFLAGS_MAINT_APPEND = -O1
+export DEB_CXXFLAGS_MAINT_APPEND = -O1
+endif

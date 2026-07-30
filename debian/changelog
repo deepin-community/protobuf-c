@@ -1,3 +1,13 @@
+protobuf-c (1.5.1-1deepin1) unstable; urgency=medium
+
+  * Fix sw64 GCC 12.3.0 ICE with -O2 optimization
+  * Reduce optimization level to -O1 on sw64 to work around GCC internal
+    compiler error in fortified string functions
+  * The ICE occurs when generating aligned stores from floating-point
+    registers in t/test-full.pb.cc
+
+ -- lichenggang <lichenggang@uniontech.com>  Thu, 30 Jul 2026 21:08:40 +0800
+
 protobuf-c (1.5.1-1) unstable; urgency=medium
 
   * New upstream version 1.5.1 (Closes: #1077250)
